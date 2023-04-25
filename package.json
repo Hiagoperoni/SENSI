@@ -6,11 +6,13 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "build": "nest build && react-scripts build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start-frontend": "cd App && cd FrontEnd && npm start",
     "start-backend": "cd App && cd BackEnd && npm start",
     "start": "concurrently \"npm run start-frontend\" \"npm run start-backend\"",
+    "build-frontend": "cd App && cd FrontEnd && npm run build",
+    "build-backend": "cd App && cd BackEnd && npm run build",
+    "build": "concurrently \"npm run build-frontend\" \"npm run build-backend\"",
     "build front": "react-scripts build",
     "test front": "react-scripts test",
     "eject": "react-scripts eject",
@@ -113,3 +115,4 @@
     }
   }
 }
+
