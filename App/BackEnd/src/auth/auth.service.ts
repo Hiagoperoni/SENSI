@@ -4,7 +4,7 @@ import {
   BadRequestException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { Users } from '@prisma/client';
+// import { Users } from '@prisma/client';
 import { UsersPrismaService } from 'src/Users/UsersPrisma/users.prisma.service';
 import { UsersService } from 'src/Users/users.service';
 import * as bcrypt from 'bcrypt';
@@ -17,7 +17,7 @@ export class AuthService {
     private readonly usersService: UsersService,
   ) {}
 
-  createToken(user: Users) {
+  createToken(user) {
     return {
       accessToken: this.jwtService.sign(
         {
