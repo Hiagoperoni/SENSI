@@ -1,0 +1,161 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.dispProd {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  justify-items: center;
+  width: 50%;
+}
+
+.geralProd {
+  border: 2px solid black;
+  cursor: pointer;
+}
+
+.homePage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.freezerProd {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 10vw;
+  height: 15vh;
+  border-radius: 5px;
+  background-color: rgb(212, 212, 212);
+}
+
+.dataFreezer {
+  display: flex;
+  width: auto;
+  align-items: center;
+  padding: 5%;
+}
+
+.imgAlerta {
+  width: 20%;
+  height: 50%;
+}
+
+.dispFreezer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.uEsquerda {
+  display: flex;
+  flex-direction: column;
+  margin-left: 0;
+}
+
+.uBaixo {
+  display: flex;
+  position: relative;
+  justify-content: flex-end;
+  align-items: flex-end;
+  bottom: 0;
+}
+
+.uDireita {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.imgConfig {
+  width: 5%;
+  height: 10%;
+}
+
+.divConfig {
+  display: flex;
+  justify-content: flex-end;
+  width: 70%;
+  margin-bottom: 1%;
+}
+
+.freezerConfig {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid black;
+  padding-bottom: 2%;
+  padding: 2%;
+  width: 50%;
+}
+
+.divTempConfig {
+  display: flex;
+  flex-direction: row;
+}
+
+.labelConfigFreezer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-right: 2%;
+}
+
+.inputConfig {
+  font-size: medium;
+  height: 1em;
+  width: 2em;
+}
+
+.freezerPageConfig {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.divZoomFreezer {
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
