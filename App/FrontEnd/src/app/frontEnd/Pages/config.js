@@ -1,40 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import HeaderComp from '../Components/HeaderComp';
-import gerarFreezers from '../../backEnd/teste/gerarFreezers';
 import FreezerConfigComp from '../Components/FreezerConfig';
 
 function Config() {
-  return(
+  const idCliente = 1;
+  const [qntFrezzers, setQntFreezers] = useState(30);
+  const numComponents = [];
+
+  const catchAllFreezers = () => {
+    for (let i = 1; i <= qntFrezzers; i++) {
+      numComponents.push(i);
+    }
+  }
+
+  useEffect(() => catchAllFreezers(), []);
+
+  return (
     <main>
       <HeaderComp />
       <h1>Página de Configuração</h1>
+      <FreezerConfigComp clienteId={idCliente} freezerId={1} key={1} />
       <div className="freezerPageConfig">
         {
-          gerarFreezers.map((cadaFreezer) => {
-            return (
-              <section key={ cadaFreezer.id } className="freezerConfig">
-                <h2>Freezer { cadaFreezer.id }</h2>
-                <div className="divTempConfig">
-                  <label className="labelConfigFreezer">
-                    <p>Temp. Padrão:</p>
-                    <input type="number" className="inputConfig"/>
-                  </label>
-                  <label className="labelConfigFreezer">
-                    <p>Tolerância Temp.:</p>
-                    <input type="number" className="inputConfig"/>
-                  </label>
-                </div>
-                <label className="labelConfigFreezer">
-                  <p>Limite de Tempo para Porta Aberta:</p>
-                  <input type="number" className="inputConfig"/>
-                </label>
-              </section>
-            )
-          })
+        numComponents.map((cadaFreezer) => {
+          return <FreezerConfigComp clienteId={idCliente} freezerId={cadaFreezer} key={cadaFreezer} />
+        })
         }
-        <FreezerConfigComp />
+
       </div>
-      <button type="button">Aplicar Mudanças</button>
+      <button type="button" onClick={() => console.log(numComponents)}>Aplicar Mudanças</button>
     </main>
   )
 }

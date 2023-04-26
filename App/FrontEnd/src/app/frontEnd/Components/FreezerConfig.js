@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { getConfigFreezer, postConfigFreezer } from '../services/request';
 
-function FreezerConfigComp(clienteId, freezerId) {
-  const clienteid = 1;
-  const id = 2;
+function FreezerConfigComp(props) {
+  const { clienteId, freezerId } = props;
   const [configFreezerAt, setConfigFreezerAt] = useState({
     temp_padrao: 0,
     temp_max: 0,
@@ -13,8 +12,10 @@ function FreezerConfigComp(clienteId, freezerId) {
 
   useEffect(() => {
     async function fetchData() {
-      const { data } = await getConfigFreezer(clienteid, id);
-      console.log(data);
+      const { data } = await getConfigFreezer(clienteId, freezerId);
+      if (!data) {
+        return setConfigFreezerAt(configFreezerAt);
+      }
       setConfigFreezerAt({
         temp_padrao: data.temp_padrao,
         temp_max: data.temp_max,
@@ -64,16 +65,14 @@ function FreezerConfigComp(clienteId, freezerId) {
 
   const postConfig = async () => {
     const dataNewConfig = {
-        cliente_id: Number(clienteid),
-        freezer_id: Number(id),
+        cliente_id: Number(clienteId),
+        freezer_id: Number(freezerId),
         temp_padrao: Number(configFreezerAt.temp_padrao),
         temp_min: Number(configFreezerAt.temp_min),
         temp_max: Number(configFreezerAt.temp_max),
         porta_tempo: Number(configFreezerAt.porta_tempo),
     }
-    console.log(dataNewConfig);
     const toPostConfig = await postConfigFreezer(dataNewConfig);
-    console.log(toPostConfig);
     return toPostConfig;
   }
 
