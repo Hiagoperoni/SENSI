@@ -15,12 +15,21 @@ export class ConfigFreezerService {
     return this.prisma.configFreezer.findMany({ where });
   }
 
+  async getById(clienteId: number, freezerId: number) {
+    const where = {
+      cliente_id: clienteId,
+      freezer_id: freezerId
+    };
+    const allConfigsById = await this.prisma.configFreezer.findMany({ where });
+    return allConfigsById[allConfigsById.length - 1];
+  }
+
   async patchData(data: PatchConfigFreezerDTO) {
     const where: ConfigFreezerWhereUniqueInput = {
-      id: Number(data.freezer_id),
+      cliente_id: Number(data.cliente_id),
+      freezer_id: Number(data.freezer_id),
     };
     const updateData = {
-      cliente_id: data.cliente_id,
       temp_padrao: data.temp_padrao,
       temp_margem_frio: data.temp_margem_frio,
       temp_margem_quente: data.temp_margem_quente,
