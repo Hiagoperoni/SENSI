@@ -1,6 +1,7 @@
 import React from 'react';
 import HeaderComp from '../Components/HeaderComp';
 import gerarFreezers from '../../backEnd/teste/gerarFreezers';
+import FreezerConfigComp from '../Components/FreezerConfig';
 
 function Config() {
   return(
@@ -31,6 +32,7 @@ function Config() {
             )
           })
         }
+        <FreezerConfigComp />
       </div>
       <button type="button">Aplicar Mudanças</button>
     </main>

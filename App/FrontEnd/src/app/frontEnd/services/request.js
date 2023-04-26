@@ -9,8 +9,33 @@ const getFreezer = async (idCliente, idFreezer) => {
   return dataFreezer;
 };
 
-const postConfigFreezer = async (body) => {
+const postConfigFreezer = async ({
+  cliente_id,
+  freezer_id,
+  porta_tempo,
+  temp_min,
+  temp_max,
+  temp_padrao,
+}) => {
+  const dataConfig = await client.post('freezer/config', {
+    cliente_id,
+    freezer_id,
+    porta_tempo,
+    temp_min,
+    temp_max,
+    temp_padrao,
+  }, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  return dataConfig;
+}
 
+
+const getConfigFreezer = async (clienteId, freezerId) => {
+  const dataConfig = await client.get(`freezer/config/${clienteId}/${freezerId}`);
+  return dataConfig;
 }
 
 const loginUser = async (email, password) => {
@@ -29,4 +54,5 @@ export {
   loginUser,
   getFreezer,
   postConfigFreezer,
+  getConfigFreezer,
 }

@@ -41,6 +41,7 @@ export class ConfigFreezerService {
     });
   }
 
+  
   async postData({
     cliente_id,
     freezer_id,
