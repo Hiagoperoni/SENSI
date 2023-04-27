@@ -21,15 +21,21 @@ function FreezerComp(props) {
     const fetchData = async () => {
       const data = await getFreezer(clienteId, freezerId);
       const { freezer_id, temp_atual, porta_status, Erro } = data.data;
-      return setLogFreezer({
+      setLogFreezer({
         freezer_id,
         temp_atual,
         porta_status,
         Erro, 
-      })
+      });
     };
-    fetchData();
+  
+    const interval = setInterval(() => {
+      fetchData();
+    }, 2000);
+  
+    return () => clearInterval(interval);
   }, []);
+  
 
   
   return (
