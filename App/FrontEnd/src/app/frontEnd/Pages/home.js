@@ -3,7 +3,7 @@ import HeaderComp from '../Components/HeaderComp';
 import PlantaComp from '../Components/PlantaComp';
 
 function Home() {
-  const qntFreezer = 31;
+  const qntFreezer = 30;
   const [qntPlantas, setQuantPlantas] = useState();
 
   const calcPlantas = () => {

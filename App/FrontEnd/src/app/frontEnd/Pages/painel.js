@@ -29,11 +29,10 @@ function Painel() {
       <div className="divConfig">
         <img src={imgConfig} alt="Configurações" className="imgConfig" onClick={goToConfig} />
       </div>
-      <FreezerComp clienteId={idCliente} freezerId={1} />
       {
-        components.map((cadaFreezer) => {
-          return <FreezerComp clienteId={idCliente} freezerId={cadaFreezer} key={cadaFreezer} />
-        })
+        [...Array(qntFreezers)].map((_, index) => (
+          <FreezerComp clienteId={idCliente} freezerId={index + 1} key={index} />
+        ))
       }
     </main>
   )

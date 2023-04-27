@@ -22,11 +22,10 @@ function Config() {
       <FreezerConfigComp clienteId={idCliente} freezerId={1} key={1} />
       <div className="freezerPageConfig">
         {
-        numComponents.map((cadaFreezer) => {
-          return <FreezerConfigComp clienteId={idCliente} freezerId={cadaFreezer} key={cadaFreezer} />
-        })
-        }
-
+        [...Array(qntFrezzers)].map((_, index) => (
+          <FreezerConfigComp clienteId={idCliente} freezerId={index + 1} key={index} />
+        ))
+      }
       </div>
       <button type="button" onClick={() => console.log(numComponents)}>Aplicar Mudanças</button>
     </main>
