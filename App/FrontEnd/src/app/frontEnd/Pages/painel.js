@@ -54,9 +54,19 @@ function Painel() {
       <div className='dispFreezer'>
         {grupos.map((grupo, index) => (
           <div className={index === 0 ? 'uEsquerda' : index === 1 ? 'uBaixo' : 'uDireita'} key={index}>
-            {grupo.map(elemento => (
-              <FreezerComp clienteId={idCliente} freezerId={paginaAtual * 15 - 15 + (elemento - 15)} key={elemento} />
-            ))}
+            {grupo.map(elemento => {
+               if (Number(id) === 1) {
+                if (index < (id * 15)) {
+                  return <FreezerComp clienteId={idCliente} freezerId={paginaAtual * 15 - 15 + (elemento)} key={elemento} />
+                }
+                return null;
+              }
+              if (index < (Number(id) * 15 - 15)) {
+                return <FreezerComp clienteId={idCliente} freezerId={paginaAtual * 15 - 15 + (elemento - ((paginaAtual * 15) - 15))} key={elemento} />
+              }
+              return null;
+            }
+            )}
           </div>
         ))}
       </div>

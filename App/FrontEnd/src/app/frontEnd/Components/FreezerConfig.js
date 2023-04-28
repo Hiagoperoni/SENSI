@@ -78,6 +78,7 @@ function FreezerConfigComp(props) {
 
   return (
     <section>
+      <h3>Configuração Freezer {freezerId}</h3>
       <div className="divTempConfig">
         <label className="labelConfigFreezer">
           <p>Temp. Padrão:</p>
