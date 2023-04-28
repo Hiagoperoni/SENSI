@@ -36,6 +36,7 @@ function Painel() {
 
   // Divida a lista de elementos em grupos de 5
   const grupos = elementos.reduce((acc, curr, index) => {
+    console.log(elementos);
     if (index % 5 === 0) {
       acc.push([]);
     }
@@ -54,7 +55,7 @@ function Painel() {
         {grupos.map((grupo, index) => (
           <div className={index === 0 ? 'uEsquerda' : index === 1 ? 'uBaixo' : 'uDireita'} key={index}>
             {grupo.map(elemento => (
-              <FreezerComp clienteId={idCliente} freezerId={paginaAtual * 15 - 15 + elemento} key={elemento} />
+              <FreezerComp clienteId={idCliente} freezerId={paginaAtual * 15 - 15 + (elemento - 15)} key={elemento} />
             ))}
           </div>
         ))}
