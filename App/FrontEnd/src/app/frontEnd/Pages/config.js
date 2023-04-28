@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import HeaderComp from '../Components/HeaderComp';
 import FreezerConfigComp from '../Components/FreezerConfig';
+import { useParams } from 'react-router-dom';
 
 function Config() {
   const idCliente = 1;
-  const [qntFrezzers, setQntFreezers] = useState(30);
+  const { id } = useParams();
+  const [qntFreezers, setQntFreezers] = useState(30);
   const numComponents = [];
 
   const catchAllFreezers = () => {
-    for (let i = 1; i <= qntFrezzers; i++) {
+    for (let i = 1; i <= qntFreezers; i++) {
       numComponents.push(i);
     }
   }
@@ -19,15 +21,22 @@ function Config() {
     <main>
       <HeaderComp />
       <h1>Página de Configuração</h1>
-      <FreezerConfigComp clienteId={idCliente} freezerId={1} key={1} />
       <div className="freezerPageConfig">
         {
-        [...Array(qntFrezzers)].map((_, index) => (
-          <FreezerConfigComp clienteId={idCliente} freezerId={index + 1} key={index} />
-        ))
-      }
+          [...Array(qntFreezers)].map((_, index) => {
+            if (Number(id) === 1) {
+              if (index < (id * 15)) {
+                return <FreezerConfigComp clienteId={idCliente} freezerId={index + 1} key={index} />
+              }
+              return null;
+            }
+            if (index < (Number(id) * 15 - 15)) {
+              return <FreezerConfigComp clienteId={idCliente} freezerId={id * 15 - 15 + (index + 1)} key={index} />
+            }
+            return null;
+          })
+        }
       </div>
-      <button type="button" onClick={() => console.log(numComponents)}>Aplicar Mudanças</button>
     </main>
   )
 }

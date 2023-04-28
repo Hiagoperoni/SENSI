@@ -28,14 +28,23 @@ function Painel() {
   return (
     <main className="homePage">
       <HeaderComp />
-      <h1>Painel da Planta 01</h1>
+      <h1>Painel da Planta {id}</h1>
       <div className="divConfig">
         <img src={imgConfig} alt="Configurações" className="imgConfig" onClick={goToConfig} />
       </div>
       {
-        [...Array(qntFreezers)].map((_, index) => (
-          <FreezerComp clienteId={idCliente} freezerId={index + 1} key={index} />
-        ))
+        [...Array(qntFreezers)].map((_, index) => {
+        if (Number(id) === 1) {
+          if (index < (id * 15)) {
+            return <FreezerComp clienteId={idCliente} freezerId={index + 1} key={index} />
+          }
+          return null;
+        }
+        if (index < (Number(id) * 15 - 15)) {
+          return <FreezerComp clienteId={idCliente} freezerId={id * 15 - 15 + (index + 1)} key={index} />
+        }
+        return null;
+        })
       }
     </main>
   )
