@@ -9,6 +9,7 @@ function Painel() {
   const idCliente = 1;
   const qntFreezers = 30;
   const components = [];
+  const [startIndex, setStartIndex] = useState(0);
 
   const goToConfig = () => {
     return navigate(`/planta/${id}/config`);
@@ -23,7 +24,24 @@ function Painel() {
     }
   }
 
-  useEffect(() => catchAllFreezers(), []);
+  useEffect(() => {
+    setStartIndex((Number(id) - 1) * 15); catchAllFreezers()
+  }, [id]);
+
+  const elementosPorPagina = 15;
+  const paginaAtual = Number(id);
+
+  // Crie uma lista com os números dos elementos a serem renderizados
+  const elementos = Array.from({ length: elementosPorPagina }, (_, index) => index + 1 + (paginaAtual - 1) * elementosPorPagina);
+
+  // Divida a lista de elementos em grupos de 5
+  const grupos = elementos.reduce((acc, curr, index) => {
+    if (index % 5 === 0) {
+      acc.push([]);
+    }
+    acc[acc.length - 1].push(curr);
+    return acc;
+  }, []);
 
   return (
     <main className="homePage">
@@ -32,20 +50,15 @@ function Painel() {
       <div className="divConfig">
         <img src={imgConfig} alt="Configurações" className="imgConfig" onClick={goToConfig} />
       </div>
-      {
-        [...Array(qntFreezers)].map((_, index) => {
-        if (Number(id) === 1) {
-          if (index < (id * 15)) {
-            return <FreezerComp clienteId={idCliente} freezerId={index + 1} key={index} />
-          }
-          return null;
-        }
-        if (index < (Number(id) * 15 - 15)) {
-          return <FreezerComp clienteId={idCliente} freezerId={id * 15 - 15 + (index + 1)} key={index} />
-        }
-        return null;
-        })
-      }
+      <div className='dispFreezer'>
+        {grupos.map((grupo, index) => (
+          <div className={index === 0 ? 'uEsquerda' : index === 1 ? 'uBaixo' : 'uDireita'} key={index}>
+            {grupo.map(elemento => (
+              <FreezerComp clienteId={idCliente} freezerId={paginaAtual * 15 - 15 + elemento} key={elemento} />
+            ))}
+          </div>
+        ))}
+      </div>
     </main>
   )
 }
