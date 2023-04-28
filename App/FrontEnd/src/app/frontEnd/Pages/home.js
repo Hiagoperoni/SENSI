@@ -25,7 +25,7 @@ function Home() {
       <div className="dispProd">
       {
         [...Array(qntPlantas)].map((_, index) => (
-          <PlantaComp key={index} />
+          <PlantaComp key={index} id={ index + 1 } />
         ))
       }
       </div>

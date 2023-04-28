@@ -1,16 +1,18 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function PlantaComp() {
+function PlantaComp(props) {
+  const { id } = props;
   let navigate = useNavigate();
+
   const paginaProduto = () => {
-    return navigate("/produto");
+    return navigate(`/planta/${id}`);
   }
 
   return (
       <section className="geralProd" onClick={ paginaProduto }>
-        <p>Planta X</p>
-        <p>Imagem Planta X</p>
+        <p>Planta {id}</p>
+        <p>Imagem Planta {id}</p>
       </section>
   )
 }

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import alertaImg from '../Imagens/Alerta.png';
 import { getFreezer } from '../services/request';
 
 function FreezerComp(props) {
   let navigate = useNavigate();
+  const { id } = useParams();
   const { clienteId, freezerId } = props;
   const [logFreezer, setLogFreezer] = useState({
     freezer_id: freezerId,
@@ -14,7 +15,7 @@ function FreezerComp(props) {
   });
 
   const paginaProduto = () => {
-    return navigate(`/produto/${freezerId}`)
+    return navigate(`/planta/${id}/${freezerId}`)
   };
 
   useEffect(() => {
