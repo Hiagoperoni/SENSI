@@ -11,10 +11,10 @@ export class LogsFreezerController {
     return this.logsFreezerService.postData(data);
   }
 
-  //  @Get()
-  //  async getAll() {
-  //    return this.logsFreezerService.getAll();
-  //  }
+  @Post(':id')
+  async resetErro(@Body() data: PostLogsFreezer) {
+    return this.logsFreezerService.resetError(data);
+  }
 
   @Get(':id')
   async getByCliente(@Param('id') id: number) {

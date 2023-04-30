@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useNavigation, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import HeaderComp from '../Components/HeaderComp.js';
 import imgConfig from '../Imagens/Configs.png'
 import FreezerComp from '../Components/FreezerComp.js';
@@ -10,12 +10,12 @@ function Painel() {
   const qntFreezers = 30;
   const components = [];
   const [startIndex, setStartIndex] = useState(0);
+  const { id } = useParams();
 
   const goToConfig = () => {
     return navigate(`/planta/${id}/config`);
   }
   
-  const { id } = useParams();
 
   const catchAllFreezers = () => {
     console.log(id);
@@ -36,7 +36,6 @@ function Painel() {
 
   // Divida a lista de elementos em grupos de 5
   const grupos = elementos.reduce((acc, curr, index) => {
-    console.log(elementos);
     if (index % 5 === 0) {
       acc.push([]);
     }

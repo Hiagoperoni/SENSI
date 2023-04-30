@@ -1,9 +1,12 @@
 import React from 'react';
 import HeaderComp from '../Components/HeaderComp';
+import { useParams } from 'react-router-dom';
 
 function ZoomProd(props) {
+  const { prod } = useParams();
+  const clienteId = 1;
   const verProps = () => {
-    console.log(props);
+    console.log(prod);
   }
 
   return(
