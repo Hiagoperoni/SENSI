@@ -104,28 +104,4 @@ export class LogsFreezerService {
     return lastFreezer;
   }
 
-  async resetError(data) {
-    console.log(data.cliente_id);
-    const allFrezzers = await this.prisma.logsFreezer.findMany({
-      where: {
-        cliente_id: data.cliente_id,
-        freezer_id: data.freezer_id,
-      }
-    });
-    const lastFreezer = allFrezzers[allFrezzers.length - 1];
-    
-    return this.prisma.logsFreezer.create({
-      data: {
-        cliente_id: lastFreezer.cliente_id,
-        freezer_id: lastFreezer.freezer_id,
-        temp_atual: lastFreezer.temp_atual,
-        temp_padrao: lastFreezer.temp_padrao,
-        temp_min: lastFreezer.temp_min,
-        temp_max: lastFreezer.temp_max,
-        porta_tempo: lastFreezer.porta_tempo,
-        porta_status: lastFreezer.porta_status,
-        Erro: 'none',
-      },
-    });
-  }
 }

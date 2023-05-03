@@ -11,12 +11,6 @@ export class LogsFreezerController {
     return this.logsFreezerService.postData({ cliente_id, freezer_id, porta_status, temp_atual });
   }
 
-  @Post(':id')
-  async resetErro(@Body() data: PostLogsFreezer) {
-    console.log('foi essa');
-    return this.logsFreezerService.resetError(data);
-  }
-
   @Get(':id')
   async getByCliente(@Param('id') id: number) {
     const clienteId = Number(id);
