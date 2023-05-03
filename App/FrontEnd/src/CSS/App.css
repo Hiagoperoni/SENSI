@@ -1,13 +1,7 @@
 .App {
   text-align: center;
-}
-
-.dispProd {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  justify-items: center;
-  width: 50%;
+  background-color: rgb(92, 144, 179, 0.5);
+  height: 100vh;
 }
 
 .geralProd {

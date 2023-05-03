@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import HeaderComp from '../Components/HeaderComp';
 import PlantaComp from '../Components/PlantaComp';
+import '../../../CSS/Home.css';
 
 function Home() {
   const qntFreezer = 30;
@@ -20,13 +21,17 @@ function Home() {
   return (
     <main className="homePage">
       <HeaderComp />
-      <h1>Meus Produtos</h1>
-      <div className="dispProd">
-      {
-        [...Array(qntPlantas)].map((_, index) => (
-          <PlantaComp key={index} id={ index + 1 } />
-        ))
-      }
+      <div className='cardHomePage'>
+        <div className='homeTitle'>
+          <h1>Meus Produtos</h1>
+        </div>
+        <div className="dispHomePage">
+          {
+            [...Array(qntPlantas)].map((_, index) => (
+              <PlantaComp key={index} id={index + 1} />
+            ))
+          }
+        </div>
       </div>
     </main>
   )
