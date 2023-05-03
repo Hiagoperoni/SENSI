@@ -1,6 +1,7 @@
 import React from 'react';
 import HeaderComp from '../Components/HeaderComp';
 import { useParams } from 'react-router-dom';
+import '../../../CSS/Zoom.css';
 
 function ZoomProd(props) {
   const { prod } = useParams();
