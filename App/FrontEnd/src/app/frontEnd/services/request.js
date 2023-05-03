@@ -9,6 +9,25 @@ const getFreezer = async (idCliente, idFreezer) => {
   return dataFreezer;
 };
 
+const postStatusFreezer = async ({
+  cliente_id,
+  freezer_id,
+  porta_status,
+  temp_atual,
+}) => {
+  const dataFreezer = await client.post('freezer/logs', {
+    cliente_id,
+    freezer_id,
+    porta_status,
+    temp_atual,
+  }, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  return dataFreezer;
+}
+
 const postConfigFreezer = async ({
   cliente_id,
   freezer_id,
@@ -55,4 +74,5 @@ export {
   getFreezer,
   postConfigFreezer,
   getConfigFreezer,
+  postStatusFreezer,
 }

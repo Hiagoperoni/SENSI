@@ -11,5 +11,5 @@ export class PostLogsFreezer {
   temp_atual: number;
 
   @IsString()
-  status_porta: string;
+  porta_status: string;
 }

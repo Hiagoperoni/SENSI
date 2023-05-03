@@ -6,14 +6,14 @@ import { PostLogsFreezer } from './LogsFreezerDTO/post-LogsFreezer';
 export class LogsFreezerService {
   constructor(private readonly prisma: LogsFreezerPrismaService) {}
 
-  async postData({ cliente_id, freezer_id, status_porta, temp_atual }: PostLogsFreezer) {
+  async postData({ cliente_id, freezer_id, porta_status, temp_atual }: PostLogsFreezer) {
     const configFreezer = await this.prisma.configFreezer.findMany({
       where: {
         cliente_id: cliente_id,
         freezer_id: freezer_id,
       },
     });
-    if (status_porta === "Aberta") {
+    if (porta_status === "Aberta") {
       const errorReported = `Porta aberta por mais de [${configFreezer[0].porta_tempo}s]`;
       const log1 = await this.prisma.logsFreezer.create({
         data: {
@@ -24,7 +24,7 @@ export class LogsFreezerService {
           temp_min: configFreezer[0].temp_min,
           temp_max: configFreezer[0].temp_max,
           porta_tempo: configFreezer[0].porta_tempo,
-          porta_status: status_porta,
+          porta_status: porta_status,
           Erro: 'none',
         },
       });
@@ -40,7 +40,7 @@ export class LogsFreezerService {
               temp_min: configFreezer[0].temp_min,
               temp_max: configFreezer[0].temp_max,
               porta_tempo: configFreezer[0].porta_tempo,
-              porta_status: status_porta,
+              porta_status: porta_status,
               Erro: errorReported,
             },
           });
@@ -61,7 +61,7 @@ export class LogsFreezerService {
           temp_min: configFreezer[0].temp_min,
           temp_max: configFreezer[0].temp_max,
           porta_tempo: configFreezer[0].porta_tempo,
-          porta_status: status_porta,
+          porta_status: porta_status,
           Erro: errorReported,
         },
       });
@@ -75,7 +75,7 @@ export class LogsFreezerService {
         temp_min: configFreezer[0].temp_min,
         temp_max: configFreezer[0].temp_max,
         porta_tempo: configFreezer[0].porta_tempo,
-        porta_status: status_porta,
+        porta_status: porta_status,
         Erro: 'none',
       },
     });
