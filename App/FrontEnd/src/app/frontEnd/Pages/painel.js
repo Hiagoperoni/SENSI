@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import HeaderComp from '../Components/HeaderComp.js';
 import imgConfig from '../Imagens/Configs.png'
 import FreezerComp from '../Components/FreezerComp.js';
+import '../../../CSS/Painel.css';
 
 function Painel() {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ function Painel() {
   const goToConfig = () => {
     return navigate(`/planta/${id}/config`);
   }
-  
+
 
   const catchAllFreezers = () => {
     console.log(id);
@@ -44,28 +45,31 @@ function Painel() {
   return (
     <main className="homePage">
       <HeaderComp />
-      <h1>Painel da Planta {id}</h1>
-      <div className="divConfig">
-        <img src={imgConfig} alt="Configurações" className="imgConfig" onClick={goToConfig} />
-      </div>
-      <div className='dispFreezer'>
-        {grupos.map((grupo, index) => (
-          <div className={index === 0 ? 'uEsquerda' : index === 1 ? 'uBaixo' : 'uDireita'} key={index}>
-            {grupo.map(elemento => {
-               if (Number(id) === 1) {
-                if (index < (id * 15)) {
-                  return <FreezerComp clienteId={idCliente} freezerId={paginaAtual * 15 - 15 + (elemento)} key={elemento} />
+      <div className='cardPainelPage'>
+        <div className='painelTitle'>
+          <p className='invisible'>SENSI</p>
+          <h1>Painel da Planta {id}</h1>
+            <img src={imgConfig} alt="Configurações" className="imgConfig" onClick={goToConfig} />
+        </div>
+        <div className='dispFreezer'>
+          {grupos.map((grupo, index) => (
+            <div className={index === 0 ? 'uEsquerda' : index === 1 ? 'uBaixo' : 'uDireita'} key={index}>
+              {grupo.map(elemento => {
+                if (Number(id) === 1) {
+                  if (index < (id * 15)) {
+                    return <FreezerComp clienteId={idCliente} freezerId={paginaAtual * 15 - 15 + (elemento)} key={elemento} />
+                  }
+                  return null;
+                }
+                if (index < (Number(id) * 15 - 15)) {
+                  return <FreezerComp clienteId={idCliente} freezerId={paginaAtual * 15 - 15 + (elemento - ((paginaAtual * 15) - 15))} key={elemento} />
                 }
                 return null;
               }
-              if (index < (Number(id) * 15 - 15)) {
-                return <FreezerComp clienteId={idCliente} freezerId={paginaAtual * 15 - 15 + (elemento - ((paginaAtual * 15) - 15))} key={elemento} />
-              }
-              return null;
-            }
-            )}
-          </div>
-        ))}
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </main>
   )

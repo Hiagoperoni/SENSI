@@ -46,37 +46,6 @@
   justify-content: flex-end;
 }
 
-.uEsquerda {
-  display: flex;
-  flex-direction: column;
-  margin-left: 0;
-}
-
-.uBaixo {
-  display: flex;
-  position: relative;
-  justify-content: flex-end;
-  align-items: flex-end;
-  bottom: 0;
-}
-
-.uDireita {
-  display: flex;
-  flex-direction: column-reverse;
-}
-
-.imgConfig {
-  width: 5%;
-  height: 10%;
-}
-
-.divConfig {
-  display: flex;
-  justify-content: flex-end;
-  width: 70%;
-  margin-bottom: 1%;
-}
-
 .freezerConfig {
   display: flex;
   flex-direction: column;
