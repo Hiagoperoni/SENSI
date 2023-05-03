@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../../../CSS/Home.css';
 
 function PlantaComp(props) {
   const { id } = props;
@@ -10,9 +11,8 @@ function PlantaComp(props) {
   }
 
   return (
-      <section className="geralProd" onClick={ paginaProduto }>
+      <section className="homePlantaComp" onClick={ paginaProduto }>
         <p>Planta {id}</p>
-        <p>Imagem Planta {id}</p>
       </section>
   )
 }
