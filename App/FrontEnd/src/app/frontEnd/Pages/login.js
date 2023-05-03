@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import '../../../CSS/Login.css';
+import LogoSENSI from '../Imagens/LogoSENSI.png'
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../services/request';
 
@@ -28,16 +30,20 @@ function Login() {
 
   return (
 
-    <main className="homePage">
-      <div>
-        <h1>SENSI</h1>
-      </div>
-      <input type="text" placeholder='Login'onChange={ verifyUser } />
-      <input type="password" placeholder='Senha'onChange={ verifyPassword } />
-      <button type="button" onClick={ verifyLogin }>Entrar</button>
-      {
-        erroLogin && <p>{ erroLogin }</p>
-      }
+    <main className="loginPage">
+      <div className='cardLogin'>
+        <div className='topoLogin'>
+          <img src={LogoSENSI} alt='Logo Sensi' className='logoSensi' />
+        </div>
+        <div className='inputsLoginDiv'>
+          <input type="text" placeholder='E-mail' onChange={ verifyUser } className='input' />
+          <input type="password" placeholder='Senha'onChange={ verifyPassword } className='input' />
+          <button type="button" onClick={ verifyLogin } className='loginButton'>Entrar</button>
+          {
+            erroLogin && <p>{ erroLogin }</p>
+          }
+        </div>
+        </div>
     </main>
   )
 }

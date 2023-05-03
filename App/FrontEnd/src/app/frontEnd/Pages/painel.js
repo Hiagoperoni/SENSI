@@ -31,10 +31,8 @@ function Painel() {
   const elementosPorPagina = 15;
   const paginaAtual = Number(id);
 
-  // Crie uma lista com os números dos elementos a serem renderizados
   const elementos = Array.from({ length: elementosPorPagina }, (_, index) => index + 1 + (paginaAtual - 1) * elementosPorPagina);
 
-  // Divida a lista de elementos em grupos de 5
   const grupos = elementos.reduce((acc, curr, index) => {
     if (index % 5 === 0) {
       acc.push([]);

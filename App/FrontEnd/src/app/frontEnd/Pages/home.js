@@ -20,7 +20,6 @@ function Home() {
   return (
     <main className="homePage">
       <HeaderComp />
-      <p>HomePage</p>
       <h1>Meus Produtos</h1>
       <div className="dispProd">
       {
