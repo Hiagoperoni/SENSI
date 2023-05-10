@@ -24,7 +24,7 @@ export class ConfigFreezerController {
 
   @Post()
   async postData(@Body(){
-    cliente_id,
+    num_cliente,
     freezer_id,
     porta_tempo,
     temp_min,
@@ -32,7 +32,7 @@ export class ConfigFreezerController {
     temp_padrao,
   }: PostConfigFreezerDTO) {
     return this.configFreezerService.postData({
-      cliente_id,
+      num_cliente,
       freezer_id,
       porta_tempo,
       temp_min,

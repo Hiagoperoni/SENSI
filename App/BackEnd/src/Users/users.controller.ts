@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDTO } from './UsersDTO/createUser.dto';
+import { LoginUserDTO } from './UsersDTO/loginUser.dto';
 // import { Roles } from "src/decorators/role.decorator";
 // import { Role } from "src/enums/role.enum";
 
@@ -22,12 +23,12 @@ export class UsersController {
 
   //  @Roles(Role.Admin)
   @Post('/create')
-  async createUser(@Body() { email, password }: CreateUserDTO) {
-    return this.usersService.createClient({ email, password });
+  async createUser(@Body() { email, password,  num_cliente, qnt_freezers }: CreateUserDTO) {
+    return this.usersService.createClient({ email, password, num_cliente, qnt_freezers });
   }
 
   @Post()
-  async login(@Body() { email, password }) {
+  async login(@Body() { email, password }: LoginUserDTO) {
     return this.usersService.getClient({ email, password });
   }
 }

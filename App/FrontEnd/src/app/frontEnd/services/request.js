@@ -1,8 +1,8 @@
 import axios from 'axios';
 // import React from 'react';
 
-const client = axios.create({ baseURL: 'http://ec2-54-144-177-213.compute-1.amazonaws.com:3300/' });
-// const client = axios.create({ baseURL: 'http://localhost:3300/' });
+// const client = axios.create({ baseURL: 'http://ec2-54-144-177-213.compute-1.amazonaws.com:3300/' });
+const client = axios.create({ baseURL: 'http://localhost:3300/' });
 
 const getFreezer = async (idCliente, idFreezer) => {
   const dataFreezer = await client.get(`freezer/logs/${idCliente}/${idFreezer}`);
@@ -10,13 +10,13 @@ const getFreezer = async (idCliente, idFreezer) => {
 };
 
 const postStatusFreezer = async ({
-  cliente_id,
+  num_cliente,
   freezer_id,
   porta_status,
   temp_atual,
 }) => {
   const dataFreezer = await client.post('freezer/logs', {
-    cliente_id,
+    num_cliente,
     freezer_id,
     porta_status,
     temp_atual,
@@ -29,7 +29,7 @@ const postStatusFreezer = async ({
 }
 
 const postConfigFreezer = async ({
-  cliente_id,
+  num_cliente,
   freezer_id,
   porta_tempo,
   temp_min,
@@ -37,7 +37,7 @@ const postConfigFreezer = async ({
   temp_padrao,
 }) => {
   const dataConfig = await client.post('freezer/config', {
-    cliente_id,
+    num_cliente,
     freezer_id,
     porta_tempo,
     temp_min,

@@ -2,7 +2,7 @@ import { IsNumber } from 'class-validator';
 
 export class PostConfigFreezerDTO {
   @IsNumber()
-  cliente_id: number;
+  num_cliente: number;
 
   @IsNumber()
   freezer_id: number;

@@ -79,8 +79,8 @@ export class AuthService {
     return response;
   }
 
-  async register(email: string, password: string) {
-    const user = await this.usersService.createClient({ email, password });
+  async register(email: string, password: string, num_cliente: number, qnt_freezers: number) {
+    const user = await this.usersService.createClient({ email, password, num_cliente, qnt_freezers });
 
     return this.createToken(user);
   }

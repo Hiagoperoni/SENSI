@@ -18,7 +18,7 @@ function ZoomProd(props) {
 
   const verProps = async () => {
     const data = {
-      cliente_id: Number(clienteId), 
+      num_cliente: Number(clienteId), 
       freezer_id: Number(prod), 
       porta_status: logFreezer.porta_status, 
       temp_atual: Number(logFreezer.temp_atual),

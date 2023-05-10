@@ -2,7 +2,7 @@ import { IsNumber, IsString } from 'class-validator';
 
 export class PostInfoSensor {
   @IsNumber()
-  cliente_id: number;
+  num_cliente: number;
 
   @IsNumber()
   freezer_id: number;

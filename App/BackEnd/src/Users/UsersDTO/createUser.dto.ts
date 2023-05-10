@@ -12,4 +12,10 @@ export class CreateUserDTO {
 
   @IsNumber()
   isAvailable?: number;
+
+  @IsNumber()
+  num_cliente: number;
+
+  @IsNumber()
+  qnt_freezers: number;
 }

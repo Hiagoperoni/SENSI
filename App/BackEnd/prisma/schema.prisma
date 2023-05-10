@@ -9,19 +9,19 @@ datasource db {
 
 model FreezerApi {
   id           Int      @id @default(autoincrement())
-  cliente_id   Int
+  num_cliente  Int
   freezer_id   Int
   temp_atual   Decimal  @db.Decimal(10, 0)
   status_porta String   @db.VarChar(45)
   createdAt    DateTime @default(now()) @db.Timestamp(0)
 
-  @@index([cliente_id], map: "cliente_id_idx")
+  @@index([num_cliente], map: "cliente_id_idx")
   @@map("freezerapi")
 }
 
 model ConfigFreezer {
   id          Int       @id @default(autoincrement())
-  cliente_id  Int
+  num_cliente Int
   freezer_id  Int
   temp_padrao Int
   temp_min    Int
@@ -29,25 +29,24 @@ model ConfigFreezer {
   porta_tempo Int
   createdAt   DateTime? @default(now()) @db.Timestamp(0)
   updatedAt   DateTime? @default(now()) @db.Timestamp(0)
-  users       Users     @relation(fields: [cliente_id], references: [cliente_id], onDelete: NoAction, onUpdate: NoAction, map: "cliente_id")
 
-  @@index([cliente_id], map: "cliente_id_idx")
   @@map("configfreezer")
 }
 
 model Users {
-  cliente_id    Int             @id @default(autoincrement())
-  email         String          @db.VarChar(127)
-  password      String          @db.VarChar(127)
-  isAvailable   Int?            @default(1) @db.TinyInt
-  configfreezer ConfigFreezer[]
+  cliente_id   Int    @id @default(autoincrement())
+  email        String @db.VarChar(127)
+  password     String @db.VarChar(127)
+  isAvailable  Int?   @default(1) @db.TinyInt
+  num_cliente  Int
+  qnt_freezers Int
 
   @@map("users")
 }
 
 model LogsFreezer {
   id           Int       @id @default(autoincrement())
-  cliente_id   Int
+  num_cliente  Int
   freezer_id   Int
   temp_atual   Decimal   @db.Decimal(10, 0)
   temp_padrao  Decimal   @db.Decimal(10, 0)
@@ -56,9 +55,7 @@ model LogsFreezer {
   porta_tempo  Decimal   @db.Decimal(10, 0)
   porta_status String    @db.VarChar(45)
   Erro         String?   @default("none") @db.VarChar(45)
-  createdAt   DateTime? @default(now()) @db.Timestamp(0)
-  // Dia          String?   @default(dbgenerated("(date_format(curdate(),_utf8mb4\\'%d/%m/%Y\\'))")) @db.VarChar(10)
-  // Hora         DateTime? @default(dbgenerated("(curtime())")) @db.Time(0)
+  createdAt    DateTime? @default(now()) @db.Timestamp(0)
 
   @@map("logsfreezer")
 }

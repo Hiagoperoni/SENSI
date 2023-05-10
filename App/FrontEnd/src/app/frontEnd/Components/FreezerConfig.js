@@ -66,12 +66,12 @@ function FreezerConfigComp(props) {
 
   const postConfig = async () => {
     const dataNewConfig = {
-        cliente_id: Number(clienteId),
-        freezer_id: Number(freezerId),
-        temp_padrao: Number(configFreezerAt.temp_padrao),
-        temp_min: Number(configFreezerAt.temp_min),
-        temp_max: Number(configFreezerAt.temp_max),
-        porta_tempo: Number(configFreezerAt.porta_tempo),
+      num_cliente: Number(clienteId),
+      freezer_id: Number(freezerId),
+      temp_padrao: Number(configFreezerAt.temp_padrao),
+      temp_min: Number(configFreezerAt.temp_min),
+      temp_max: Number(configFreezerAt.temp_max),
+      porta_tempo: Number(configFreezerAt.porta_tempo),
     }
     const toPostConfig = await postConfigFreezer(dataNewConfig);
     return toPostConfig;
@@ -80,26 +80,26 @@ function FreezerConfigComp(props) {
   return (
     <section className='sectionConfig'>
       <div className='divConfigTitle'>
-      <h3>Configuração Freezer {freezerId}</h3>
+        <h3>Configuração Freezer {freezerId}</h3>
       </div>
       <div className="divTempConfig">
         <label className="labelConfigFreezer">
           <p>Temp. Padrão:</p>
-          <input type="number" className="inputConfig" onChange={ verifytempPadrao } value={configFreezerAt.temp_padrao} />
+          <input type="number" className="inputConfig" onChange={verifytempPadrao} value={configFreezerAt.temp_padrao} />
         </label>
         <label className="labelConfigFreezer">
           <p>Temp. Max.:</p>
-          <input type="number" className="inputConfig" onChange={ verifytempMax }  value={configFreezerAt.temp_max}/>
+          <input type="number" className="inputConfig" onChange={verifytempMax} value={configFreezerAt.temp_max} />
         </label>
         <label className="labelConfigFreezer">
           <p>Temp. Min.:</p>
-          <input type="number" className="inputConfig" onChange={ verifytempMin }  value={configFreezerAt.temp_min}/>
+          <input type="number" className="inputConfig" onChange={verifytempMin} value={configFreezerAt.temp_min} />
         </label>
         <label className="labelConfigFreezer">
           <p>Limite de Tempo para Porta Aberta:</p>
-          <input type="number" className="inputConfig" onChange={ verifyPortaTempo }  value={configFreezerAt.porta_tempo}/>
+          <input type="number" className="inputConfig" onChange={verifyPortaTempo} value={configFreezerAt.porta_tempo} />
         </label>
-        <button type="button" className='applyButton' onClick={ postConfig }>Aplicar</button>
+        <button type="button" className='applyButton' onClick={postConfig}>Aplicar</button>
       </div>
     </section>
   )

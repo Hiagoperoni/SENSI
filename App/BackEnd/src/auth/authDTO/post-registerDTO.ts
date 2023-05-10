@@ -1,4 +1,4 @@
-import { IsEmail, IsString } from 'class-validator';
+import { IsEmail, IsNumber, IsString } from 'class-validator';
 
 export class PostAuthRegisterDTO {
   @IsEmail()
@@ -6,4 +6,10 @@ export class PostAuthRegisterDTO {
 
   @IsString()
   password: string;
+
+  @IsNumber()
+  num_cliente: number;
+
+  @IsNumber()
+  qnt_freezers: number;
 }
