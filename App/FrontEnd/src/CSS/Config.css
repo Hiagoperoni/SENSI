@@ -77,3 +77,10 @@
     border-left: 1px solid black;
     cursor: pointer;
 }
+
+.freezerPageConfig {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    align-items: center;
+  }
+  

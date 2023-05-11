@@ -38,9 +38,3 @@
   display: flex;
   justify-content: flex-end;
 }
-
-.freezerPageConfig {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
