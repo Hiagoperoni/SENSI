@@ -25,6 +25,7 @@
 .sectionConfig {
     margin-top: 2%;
     border-radius: 10px;
+    width: 100;
     box-shadow: 2px 2px 2px 2px rgb(177, 177, 177);
     border: 1px solid black;
 }
